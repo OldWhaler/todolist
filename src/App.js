@@ -1,6 +1,7 @@
 import './App.css';
 
 import React, { useState } from 'react'
+import TodoList from './components/TodoList'
 
 function App() {
   const [todo, setTodo] = useState([])
@@ -46,7 +47,7 @@ function App() {
         <input type="text" ref={refInput} onBlur={buttonBlurHandler} />
         <button onClick={addButtonHandler} >add todo</button>
       </label>
-      <ul>
+      {/* <ul>
         {todo.map(elem => {
           return <li className='todo-item' key={elem.id}>
             <input type="checkbox" checked={elem.complited} onChange={() => doneCheckInputHandler(elem.id)} />
@@ -55,7 +56,12 @@ function App() {
 
           </li>
         })}
-      </ul>
+      </ul> */}
+      <TodoList todo={todo}
+        doneCheckInputHandler={doneCheckInputHandler}
+        removeSpanHeandler={removeSpanHeandler}
+      />
+
     </div>
   );
 }

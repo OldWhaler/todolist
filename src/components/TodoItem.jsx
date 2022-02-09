@@ -1,4 +1,4 @@
-function TodoItem({ id, text, complited }) {
+function TodoItem({ id, text, complited, doneCheckInputHandler, removeSpanHeandler }) {
   return (
     <li className='todo-item' key={id}>
       <input type="checkbox" checked={complited} onChange={() => doneCheckInputHandler(id)} />
