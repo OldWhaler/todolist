@@ -1,23 +1,61 @@
-import logo from './logo.svg';
 import './App.css';
 
+import React, { useState } from 'react'
+
 function App() {
+  const [todo, setTodo] = useState([])
+
+  const refInput = React.createRef()
+
+  const addButtonHandler = () => {
+    const newTodoText = refInput.current.value.trim();
+    if (newTodoText.length) {
+      setTodo([...todo, {
+        text: newTodoText,
+        id: new Date().toISOString(),
+        complited: false
+      }])
+
+      refInput.current.value = ''
+    }
+  }
+
+  const buttonBlurHandler = (e) => {
+    if (!e.target.value.trim().length) {
+      e.target.value = ''
+    }
+  }
+
+  const removeSpanHeandler = (id) => {
+    setTodo(todo.filter(elem => elem.id !== id))
+  }
+
+  const doneCheckInputHandler = (id) => {
+    setTodo(
+      todo.map(elem => {
+        if (elem.id === id) {
+          elem.complited = !elem.complited
+        }
+        return elem
+      }))
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <label className='add-todo'>
+        <input type="text" ref={refInput} onBlur={buttonBlurHandler} />
+        <button onClick={addButtonHandler} >add todo</button>
+      </label>
+      <ul>
+        {todo.map(elem => {
+          return <li className='todo-item' key={elem.id}>
+            <input type="checkbox" checked={elem.complited} onChange={() => doneCheckInputHandler(elem.id)} />
+            <span className='todo-item-text'>{elem.text}</span>
+            <span className='todo-item-remove' onClick={() => removeSpanHeandler(elem.id)}>&times;</span>
+
+          </li>
+        })}
+      </ul>
     </div>
   );
 }
