@@ -49,7 +49,6 @@ function App() {
       <InputField
         buttonBlurHandler={buttonBlurHandler}
         addButtonHandler={addButtonHandler}
-        setTodo={setTodo}
         refInput={refInput}
       />
 
