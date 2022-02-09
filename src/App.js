@@ -2,6 +2,7 @@ import './App.css';
 
 import React, { useState } from 'react'
 import TodoList from './components/TodoList'
+import InputField from './components/InputField';
 
 function App() {
   const [todo, setTodo] = useState([])
@@ -10,6 +11,7 @@ function App() {
 
   const addButtonHandler = () => {
     const newTodoText = refInput.current.value.trim();
+
     if (newTodoText.length) {
       setTodo([...todo, {
         text: newTodoText,
@@ -43,20 +45,18 @@ function App() {
 
   return (
     <div className="App">
-      <label className='add-todo'>
+      {/* <label className='add-todo'>
         <input type="text" ref={refInput} onBlur={buttonBlurHandler} />
         <button onClick={addButtonHandler} >add todo</button>
-      </label>
-      {/* <ul>
-        {todo.map(elem => {
-          return <li className='todo-item' key={elem.id}>
-            <input type="checkbox" checked={elem.complited} onChange={() => doneCheckInputHandler(elem.id)} />
-            <span className='todo-item-text'>{elem.text}</span>
-            <span className='todo-item-remove' onClick={() => removeSpanHeandler(elem.id)}>&times;</span>
+      </label> */}
 
-          </li>
-        })}
-      </ul> */}
+      <InputField
+        buttonBlurHandler={buttonBlurHandler}
+        addButtonHandler={addButtonHandler}
+        setTodo={setTodo}
+        refInput={refInput}
+      />
+
       <TodoList todo={todo}
         doneCheckInputHandler={doneCheckInputHandler}
         removeSpanHeandler={removeSpanHeandler}

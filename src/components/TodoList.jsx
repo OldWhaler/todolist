@@ -1,6 +1,7 @@
 import TodoItem from './TodoItem'
 
 function TodoList({ todo, doneCheckInputHandler, removeSpanHeandler }) {
+  console.log(todo)
   return (
     <ul>
       {todo.map(elem => <TodoItem
