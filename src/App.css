@@ -7,19 +7,21 @@
 }
 
 body{
-  background: #f5f4f6;
+  background: url(../public/images/bg_repeat.jpg);
+  /* background: #f5f4f6; */
   padding-top: 50px;
 }
 
 .App{
-  width: 700px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 10px;
 
   background-color: #fffdff;
 
   border: 1px solid #e8e7e8;
-  box-shadow: 5px 5px 10px #dbd6db;
+  box-shadow: 5px 5px 5px 5px #8d8d8d;
+  border-radius: 5px;
 }
 
 
@@ -62,6 +64,8 @@ ul{
   justify-content: space-between;
 }
 
+
+
 .todo-item-text{
   flex-grow: 1;
 }
@@ -74,8 +78,13 @@ ul{
 .checkbox{
   margin-right: 10px;
   position: relative;
-  top: 8px;
+  left: -2px;
+  top: 7px;
   opacity: 0;
+  width: 15px;
+  height: 15px;
+
+  cursor: pointer;
 }
 
 .fake-checkbox{
@@ -98,11 +107,38 @@ ul{
   position: absolute;
   top: -11px;
   left: 1px;
-
 }
 
 
 input:checked + span{
   color: #c4c4c4;
   text-decoration: line-through;
+}
+
+.footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 4px 5px;
+  margin-top: 10px;
+
+}
+
+.footer button{
+  font-size: 15px;
+  background: transparent;
+
+  color: #c4c4c4;
+
+}
+
+.footer span{
+  font-size: 15px;
+  color: #c4c4c4;
+  
+}
+
+.button-active{
+  border: 1px solid grey;
 }

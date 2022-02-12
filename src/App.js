@@ -3,6 +3,7 @@ import './App.css';
 import React, { useState } from 'react'
 import TodoList from './components/TodoList'
 import InputField from './components/InputField';
+import FooterSort from './components/FooterSort';
 
 function App() {
   const [todo, setTodo] = useState([])
@@ -50,6 +51,19 @@ function App() {
       }))
   }
 
+  const toShowAllHandler = (todos) => {
+    setTodo(todos)
+  }
+
+  const toShowActiveHandler = (todos) => {
+    setTodo(todos.filter(elem => !elem.complited))
+  }
+
+  const toShowComplitedHandler = (todos) => {
+    setTodo(todos.filter(elem => elem.complited))
+
+  }
+
   return (
     <div className="App">
 
@@ -61,10 +75,19 @@ function App() {
         refInput={refInput}
       />
 
-      <TodoList todo={todo}
+      <TodoList
+        todo={todo}
         doneCheckInputHandler={doneCheckInputHandler}
         removeSpanHeandler={removeSpanHeandler}
       />
+
+      <FooterSort
+        todo={todo}
+        toShowAllHandler={toShowAllHandler}
+        toShowActiveHandler={toShowActiveHandler}
+        toShowComplitedHandler={toShowComplitedHandler}
+      />
+
 
     </div>
   );
