@@ -37,15 +37,14 @@ body{
 
 .App input[type="text"]{
   flex-grow: 1;
+  outline: none;
 }
 
 .App button{
-  margin-left: 10px;
   cursor: pointer;
 }
 
 ul{
-
   display: flex;
   flex-direction: column;
 }
@@ -55,7 +54,7 @@ ul{
   list-style: none;
 
   padding: 4px;
-  margin-bottom: 15px;
+  margin-top: 10px;
 
   position: relative;
 
@@ -76,29 +75,29 @@ ul{
   margin-right: 10px;
   position: relative;
   top: 8px;
-opacity: 0;
+  opacity: 0;
 }
 
 .fake-checkbox{
   display: inline-block;
-  height: 18px;
-  width: 18px;
+  height: 17px;
+  width: 17px;
 
   border: 1px solid #858486;
   border-radius: 50%;
 
   position: absolute;
   left: 0;
-  top: 8px;
+  top: 9px;
 }
 
 .fake-checkbox-mark{
-  height: 18px;
-  width: 18px;
+  height: 17px;
+  width: 17px;
 
   position: absolute;
-  top: -10px;
-  left: 2px;
+  top: -11px;
+  left: 1px;
 
 }
 

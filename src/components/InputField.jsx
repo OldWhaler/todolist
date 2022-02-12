@@ -1,10 +1,10 @@
 import React from "react"
 
-function InputField({ buttonBlurHandler, addButtonHandler, refInput }) {
+function InputField({ inputKeydownHandler, inputBlurHandler, addButtonHandler, refInput }) {
 
   return (
     <label className='add-todo'>
-      <input type="text" ref={refInput} onBlur={buttonBlurHandler} />
+      <input type="text" ref={refInput} onBlur={inputBlurHandler} onKeyDown={inputKeydownHandler} />
       <button onClick={addButtonHandler} >add todo</button>
     </label>
   )

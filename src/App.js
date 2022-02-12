@@ -23,9 +23,16 @@ function App() {
     }
   }
 
-  const buttonBlurHandler = (e) => {
+  const inputBlurHandler = (e) => {
     if (!e.target.value.trim().length) {
       e.target.value = ''
+    }
+  }
+
+  const inputKeydownHandler = (e) => {
+    if (e.key === 'Enter') {
+      addButtonHandler()
+      inputBlurHandler(e)
     }
   }
 
@@ -48,7 +55,8 @@ function App() {
 
 
       <InputField
-        buttonBlurHandler={buttonBlurHandler}
+        inputBlurHandler={inputBlurHandler}
+        inputKeydownHandler={inputKeydownHandler}
         addButtonHandler={addButtonHandler}
         refInput={refInput}
       />
