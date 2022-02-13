@@ -17,7 +17,8 @@ function App() {
       setTodo([...todo, {
         text: newTodoText,
         id: new Date().toISOString(),
-        complited: false
+        complited: false,
+        visability: true
       }])
 
       refInput.current.value = ''
@@ -52,16 +53,29 @@ function App() {
   }
 
   const toShowAllHandler = (todos) => {
-    setTodo(todos)
+    setTodo(todos.map(elem => {
+      elem.visability = true
+      return elem
+    }))
   }
 
+
   const toShowActiveHandler = (todos) => {
-    setTodo(todos.filter(elem => !elem.complited))
+    setTodo(todos.map(elem => {
+      elem.visability = elem.complited === false ? true : false
+      return elem
+    }))
   }
 
   const toShowComplitedHandler = (todos) => {
-    setTodo(todos.filter(elem => elem.complited))
+    setTodo(todos.map(elem => {
+      elem.visability = elem.complited === true ? true : false
+      return elem
+    }))
+  }
 
+  const toClearComplitedHandler = (todos) => {
+    setTodo(todos.filter(elem => elem.complited === false))
   }
 
   return (
@@ -86,6 +100,7 @@ function App() {
         toShowAllHandler={toShowAllHandler}
         toShowActiveHandler={toShowActiveHandler}
         toShowComplitedHandler={toShowComplitedHandler}
+        toClearComplitedHandler={toClearComplitedHandler}
       />
 
 
