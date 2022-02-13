@@ -8,7 +8,7 @@
 
 body{
   background: url(../public/images/bg_repeat.jpg);
-  /* background: #f5f4f6; */
+  background: #f5f4f6;
   padding-top: 50px;
 }
 
@@ -20,7 +20,7 @@ body{
   background-color: #fffdff;
 
   border: 1px solid #e8e7e8;
-  box-shadow: 5px 5px 5px 5px #8d8d8d;
+  box-shadow: 5px 5px 5px 5px #dad9d9;
   border-radius: 5px;
 }
 
@@ -32,17 +32,17 @@ body{
   justify-content: space-around;
 }
 
-.App input,.App button{
+input, button{
   padding: 5px;
   border: none;
 }
 
-.App input[type="text"]{
+label input[type="text"]{
   flex-grow: 1;
   outline: none;
 }
 
-.App button{
+label button{
   cursor: pointer;
 }
 
@@ -71,7 +71,7 @@ ul{
 }
 
 .todo-item-remove{
-  color: #f00;
+  color: #ff6347;
   cursor: pointer;
 }
 
@@ -92,7 +92,7 @@ ul{
   height: 17px;
   width: 17px;
 
-  border: 1px solid #858486;
+  border: 1px solid #c4c4c4;
   border-radius: 50%;
 
   position: absolute;
@@ -107,12 +107,17 @@ ul{
   position: absolute;
   top: -11px;
   left: 1px;
+
+  color:#c4c4c4;
+
 }
 
 
 input:checked + span{
   color: #c4c4c4;
   text-decoration: line-through;
+  transition-duration: 0.4s;
+
 }
 
 .footer{
@@ -129,6 +134,8 @@ input:checked + span{
   font-size: 15px;
   background: transparent;
 
+  cursor: pointer;
+
   color: #c4c4c4;
 
 }
@@ -139,6 +146,10 @@ input:checked + span{
   
 }
 
-.button-active{
-  border: 1px solid grey;
+.footer .button-active{
+  color: #787676;
+  font-weight: 600;
+  transition-duration: 0.1s;
 }
+
+

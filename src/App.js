@@ -7,6 +7,13 @@ import FooterSort from './components/FooterSort';
 
 function App() {
   const [todo, setTodo] = useState([])
+  const [buttonClass, setButtonClass] = useState(
+    {
+      all: true,
+      active: false,
+      completed: false
+    }
+  )
 
   const refInput = React.createRef()
 
@@ -20,9 +27,9 @@ function App() {
         complited: false,
         visability: true
       }])
-
       refInput.current.value = ''
     }
+
   }
 
   const inputBlurHandler = (e) => {
@@ -42,7 +49,7 @@ function App() {
     setTodo(todo.filter(elem => elem.id !== id))
   }
 
-  const doneCheckInputHandler = (id) => {
+  const checkboxHandler = (id) => {
     setTodo(
       todo.map(elem => {
         if (elem.id === id) {
@@ -50,6 +57,20 @@ function App() {
         }
         return elem
       }))
+
+
+    let sortParam;
+    for (let [key, value] of Object.entries(buttonClass)) {
+      if (value === true) {
+        sortParam = key
+      }
+    }
+    if (sortParam === 'active') {
+      toShowActiveHandler(todo)
+    }
+    if (sortParam === 'completed') {
+      toShowComplitedHandler(todo)
+    }
   }
 
   const toShowAllHandler = (todos) => {
@@ -78,6 +99,15 @@ function App() {
     setTodo(todos.filter(elem => elem.complited === false))
   }
 
+
+  const toAddActiveClass = (name) => {
+    const newButtonClass = {};
+    for (let key of Object.keys(buttonClass)) {
+      newButtonClass[key] = name === key
+    }
+    setButtonClass(newButtonClass)
+  }
+
   return (
     <div className="App">
 
@@ -91,16 +121,18 @@ function App() {
 
       <TodoList
         todo={todo}
-        doneCheckInputHandler={doneCheckInputHandler}
+        checkboxHandler={checkboxHandler}
         removeSpanHeandler={removeSpanHeandler}
       />
 
       <FooterSort
         todo={todo}
+        buttonClass={buttonClass}
         toShowAllHandler={toShowAllHandler}
         toShowActiveHandler={toShowActiveHandler}
         toShowComplitedHandler={toShowComplitedHandler}
         toClearComplitedHandler={toClearComplitedHandler}
+        toAddActiveClass={toAddActiveClass}
       />
 
 

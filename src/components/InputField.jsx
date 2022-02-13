@@ -1,6 +1,6 @@
 import React from "react"
 
-function InputField({ inputKeydownHandler, inputBlurHandler, addButtonHandler, refInput }) {
+function InputField({ toShowActiveHandler, inputKeydownHandler, inputBlurHandler, addButtonHandler, refInput }) {
 
   return (
     <label className='add-todo'>

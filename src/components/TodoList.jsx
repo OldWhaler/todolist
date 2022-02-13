@@ -1,14 +1,12 @@
-import { useEffect } from 'react'
 import TodoItem from './TodoItem'
 
-
-function TodoList({ todo, doneCheckInputHandler, removeSpanHeandler }) {
+function TodoList({ todo, checkboxHandler, removeSpanHeandler }) {
   return (
     <ul>
       {todo.map(elem => <TodoItem
         key={elem.id}
         {...elem}
-        doneCheckInputHandler={doneCheckInputHandler}
+        checkboxHandler={checkboxHandler}
         removeSpanHeandler={removeSpanHeandler} />)}
     </ul>
   )
